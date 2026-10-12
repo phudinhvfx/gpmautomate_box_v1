@@ -1,0 +1,13 @@
+# GPM Automate runtime/build artifacts
+*.gpmconfig
+*.gpmlaunch
+.build
+
+# Local captures and temporary files
+*.tmp
+*.bak
+.device*-*.png
+
+# Workspace-only artifacts not belonging to this GPM project
+_staging/
+.codex_patch_probe

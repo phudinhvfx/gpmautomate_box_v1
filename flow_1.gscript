@@ -1,0 +1,350 @@
+{
+  "$type": "GPMAutomateEditor.Models.SubEditor, GPMAutomateEditor.Models",
+  "body": {
+    "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+    "nodes": [
+      {
+        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+        "type": 91,
+        "element_xpath": null,
+        "output_variable_name": null,
+        "delay": "0,0",
+        "continue_on_error": false,
+        "id": "68923903-b64f-45c9-b7ea-9e67a48553e5",
+        "display_text": "Start app",
+        "raw_input": "[{\"Key\":\"PACKAGE_NAME\",\"Value\":\"com.facebook.lite\"}]",
+        "comment": "open Facebook Lite"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+        "type": 120,
+        "element_xpath": "//*[@resource-id='com.facebook.lite:id/root_layout']",
+        "output_variable_name": null,
+        "delay": "0,0",
+        "continue_on_error": false,
+        "id": "95b2517c-d5bc-4899-8d74-675c267392fc",
+        "display_text": "Wait element",
+        "raw_input": "[{\"Key\":\"TIME_OUT\",\"Value\":\"20\"}]",
+        "comment": "wait Facebook Lite"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+        "type": 7,
+        "element_xpath": null,
+        "output_variable_name": null,
+        "delay": "0,0",
+        "continue_on_error": false,
+        "id": "9f548148-b7fc-47f0-ab11-3275011c5505",
+        "display_text": "Delay",
+        "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"1500\"},{\"Key\":\"MAX\",\"Value\":\"2500\"}]",
+        "comment": "wait feed..."
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ForBlockNode, GPMAutomateEditor.Models",
+        "start": "0",
+        "end": "5",
+        "step": "1",
+        "nodes": [
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 11,
+            "element_xpath": null,
+            "output_variable_name": "scrollStartX",
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "372de366-909b-4ffd-a0e6-9436c99dd5fc",
+            "display_text": "Random number",
+            "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"520\"},{\"Key\":\"MAX\",\"Value\":\"920\"}]",
+            "comment": "random start x"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 11,
+            "element_xpath": null,
+            "output_variable_name": "scrollStartY",
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "f79fbfea-083b-45ba-8882-c5a78bfa5aa7",
+            "display_text": "Random number",
+            "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"2350\"},{\"Key\":\"MAX\",\"Value\":\"2550\"}]",
+            "comment": "random start y"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 11,
+            "element_xpath": null,
+            "output_variable_name": "scrollEndX",
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "2b75830c-72d1-40cb-9f30-55fe3ab45a3e",
+            "display_text": "Random number",
+            "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"520\"},{\"Key\":\"MAX\",\"Value\":\"920\"}]",
+            "comment": "random end x"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 11,
+            "element_xpath": null,
+            "output_variable_name": "scrollEndY",
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "1d3b9d1c-4fb5-4208-89f4-ed22f450e616",
+            "display_text": "Random number",
+            "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"1150\"},{\"Key\":\"MAX\",\"Value\":\"1350\"}]",
+            "comment": "random end y"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 11,
+            "element_xpath": null,
+            "output_variable_name": "scrollDuration",
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "ef60d693-86c2-4efa-b0fe-431a7b421295",
+            "display_text": "Random number",
+            "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"450\"},{\"Key\":\"MAX\",\"Value\":\"700\"}]",
+            "comment": "random scroll duration"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 1,
+            "element_xpath": null,
+            "output_variable_name": "scrollStartPos",
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "b2737f16-39e5-44d9-a8f2-dedd68f26b78",
+            "display_text": "Set variable",
+            "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"$scrollStartX,$scrollStartY\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+            "comment": "set start point"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 1,
+            "element_xpath": null,
+            "output_variable_name": "scrollEndPos",
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "8da7aa9b-19ab-484e-bd1f-fd9e3eb7c420",
+            "display_text": "Set variable",
+            "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"$scrollEndX,$scrollEndY\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+            "comment": "set end point"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 108,
+            "element_xpath": null,
+            "output_variable_name": null,
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "a3179690-64e6-467d-9fe8-646d7601bef5",
+            "display_text": "Scroll",
+            "raw_input": "[{\"Key\":\"SCROLL_TYPE\",\"Value\":\"POINTS\"},{\"Key\":\"DIRECTION\",\"Value\":\"Up\"},{\"Key\":\"START_POS\",\"Value\":\"$scrollStartPos\"},{\"Key\":\"END_POS\",\"Value\":\"$scrollEndPos\"},{\"Key\":\"DURATION_MS\",\"Value\":\"$scrollDuration\"},{\"Key\":\"POS\",\"Value\":\"\"},{\"Key\":\"ACTION_TYPE\",\"Value\":\"Down\"}]",
+            "comment": "scroll feed up"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 7,
+            "element_xpath": null,
+            "output_variable_name": null,
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "d03edbf1-076c-4ce6-abc1-4180be4868ff",
+            "display_text": "Delay",
+            "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"1200\"},{\"Key\":\"MAX\",\"Value\":\"1800\"}]",
+            "comment": "wait feed..."
+          }
+        ],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "1fa31b69-8db3-4750-b610-104a0f32ec7a",
+        "display_text": "For",
+        "raw_input": "[{\"Key\":\"START\",\"Value\":\"0\"},{\"Key\":\"END\",\"Value\":\"5\"},{\"Key\":\"STEP\",\"Value\":\"1\"}]",
+        "comment": "scroll feed five times"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+        "type": 33,
+        "element_xpath": null,
+        "output_variable_name": "likePos",
+        "delay": "0,0",
+        "continue_on_error": false,
+        "id": "56193a68-d60e-4133-a4b8-83cc20296763",
+        "display_text": "Image search",
+        "raw_input": "[{\"Key\":\"IMG\",\"Value\":\"img_3.img64\"},{\"Key\":\"THRESH_HOLD\",\"Value\":\"0.8\"},{\"Key\":\"TRUE_COLOR\",\"Value\":\"No\"}]",
+        "comment": "find Like position"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+        "type": 33,
+        "element_xpath": null,
+        "output_variable_name": "commentPos",
+        "delay": "0,0",
+        "continue_on_error": false,
+        "id": "a1b72138-804a-4e9b-b0fe-0e4f6f821ff9",
+        "display_text": "Image search",
+        "raw_input": "[{\"Key\":\"IMG\",\"Value\":\"img_5.img64\"},{\"Key\":\"THRESH_HOLD\",\"Value\":\"0.8\"},{\"Key\":\"TRUE_COLOR\",\"Value\":\"No\"}]",
+        "comment": "find Comment position"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+        "type": 107,
+        "element_xpath": null,
+        "output_variable_name": null,
+        "delay": "0,0",
+        "continue_on_error": false,
+        "id": "25e04fcf-131f-4615-b4e8-c8b6d5acff86",
+        "display_text": "Touch",
+        "raw_input": "[{\"Key\":\"TOUCH_TYPE\",\"Value\":\"TOUCH_POS\"},{\"Key\":\"XPATH\",\"Value\":\"\"},{\"Key\":\"POS\",\"Value\":\"$likePos\"},{\"Key\":\"MODE\",\"Value\":\"Normal\"}]",
+        "comment": "touch Like position"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+        "type": 107,
+        "element_xpath": null,
+        "output_variable_name": null,
+        "delay": "0,0",
+        "continue_on_error": false,
+        "id": "38dcbf86-829d-4a19-a26c-7c2ed83d39b9",
+        "display_text": "Touch",
+        "raw_input": "[{\"Key\":\"TOUCH_TYPE\",\"Value\":\"TOUCH_POS\"},{\"Key\":\"XPATH\",\"Value\":\"\"},{\"Key\":\"POS\",\"Value\":\"$commentPos\"},{\"Key\":\"MODE\",\"Value\":\"Normal\"}]",
+        "comment": "touch Comment position"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+        "nodes": [
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 7,
+            "element_xpath": null,
+            "output_variable_name": null,
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "0ea077c4-f3f2-4dc6-8a83-1a4c7a9b6ed2",
+            "display_text": "Delay",
+            "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"600\"},{\"Key\":\"MAX\",\"Value\":\"800\"}]",
+            "comment": "wait comment panel..."
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 110,
+            "element_xpath": null,
+            "output_variable_name": null,
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "25ba2d13-1a09-4e16-b941-f693a75c755d",
+            "display_text": "Press key",
+            "raw_input": "[{\"Key\":\"KEY\",\"Value\":\"Back\"}]",
+            "comment": "close comment by Back"
+          }
+        ],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "86574bc5-4b9b-4bcf-9b88-b63d3f555e0d",
+        "display_text": "Normal block",
+        "raw_input": null,
+        "comment": "alternative 1: close by Back"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+        "nodes": [
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 107,
+            "element_xpath": null,
+            "output_variable_name": null,
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "722b7b5a-db72-40ce-a2a6-9e9efa874dae",
+            "display_text": "Touch",
+            "raw_input": "[{\"Key\":\"TOUCH_TYPE\",\"Value\":\"TOUCH_POS\"},{\"Key\":\"XPATH\",\"Value\":\"\"},{\"Key\":\"POS\",\"Value\":\"$commentPos\"},{\"Key\":\"MODE\",\"Value\":\"Normal\"}]",
+            "comment": "reopen comment panel"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 7,
+            "element_xpath": null,
+            "output_variable_name": null,
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "097bafe4-9c19-46de-9eaf-4b901158f88d",
+            "display_text": "Delay",
+            "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"600\"},{\"Key\":\"MAX\",\"Value\":\"800\"}]",
+            "comment": "wait comment panel..."
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 107,
+            "element_xpath": null,
+            "output_variable_name": null,
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "5392dd6b-8f18-4cd6-b39d-fd6082fc0535",
+            "display_text": "Touch",
+            "raw_input": "[{\"Key\":\"TOUCH_TYPE\",\"Value\":\"TOUCH_POS\"},{\"Key\":\"XPATH\",\"Value\":\"\"},{\"Key\":\"POS\",\"Value\":\"360,300\"},{\"Key\":\"MODE\",\"Value\":\"Normal\"}]",
+            "comment": "close by outside tap"
+          }
+        ],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "8ffc6b37-09aa-40f9-a0c2-e9376fd94f73",
+        "display_text": "Normal block",
+        "raw_input": null,
+        "comment": "alternative 2: close by outside tap"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+        "nodes": [
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 107,
+            "element_xpath": null,
+            "output_variable_name": null,
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "8d6d3f7e-670b-439a-86a8-be597dbcee90",
+            "display_text": "Touch",
+            "raw_input": "[{\"Key\":\"TOUCH_TYPE\",\"Value\":\"TOUCH_POS\"},{\"Key\":\"XPATH\",\"Value\":\"\"},{\"Key\":\"POS\",\"Value\":\"$commentPos\"},{\"Key\":\"MODE\",\"Value\":\"Normal\"}]",
+            "comment": "reopen comment panel"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 7,
+            "element_xpath": null,
+            "output_variable_name": null,
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "b11aafec-9903-4d01-9f2d-c49f4107600a",
+            "display_text": "Delay",
+            "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"600\"},{\"Key\":\"MAX\",\"Value\":\"800\"}]",
+            "comment": "wait comment panel..."
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 108,
+            "element_xpath": null,
+            "output_variable_name": null,
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "e2b328c7-b14d-4488-b578-69f644c4ae6a",
+            "display_text": "Scroll",
+            "raw_input": "[{\"Key\":\"SCROLL_TYPE\",\"Value\":\"POINTS\"},{\"Key\":\"DIRECTION\",\"Value\":\"Up\"},{\"Key\":\"START_POS\",\"Value\":\"720,450\"},{\"Key\":\"END_POS\",\"Value\":\"720,1750\"},{\"Key\":\"DURATION_MS\",\"Value\":\"650\"},{\"Key\":\"POS\",\"Value\":\"\"},{\"Key\":\"ACTION_TYPE\",\"Value\":\"Down\"}]",
+            "comment": "close by swipe down"
+          }
+        ],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "a4d9a6fb-d8cc-4b19-a74b-8d246a7f9b16",
+        "display_text": "Normal block",
+        "raw_input": null,
+        "comment": "alternative 3: close by swipe down"
+      }
+    ],
+    "expanded": true,
+    "continue_on_error": false,
+    "id": "a76657e8-671c-4354-8b67-b705e35bc864",
+    "display_text": null,
+    "raw_input": null,
+    "comment": null
+  },
+  "name": "Main"
+}
