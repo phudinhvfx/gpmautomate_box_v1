@@ -1,0 +1,308 @@
+{
+  "$type": "GPMAutomateEditor.Models.SubEditor, GPMAutomateEditor.Models",
+  "body": {
+    "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+    "nodes": [
+      {
+        "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+        "nodes": [],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "9cb11703-c13e-4d0c-a9f5-dbd07cea6af7",
+        "display_text": "Normal block",
+        "raw_input": null,
+        "comment": "GHI CHÚ FLOW 0 V4 — Recovery\n- Dùng khi flow hoạt động không đặt được $flowRunStatus = OK.\n- Nếu ảnh panel img_6.img64 có mặt, swipe xuống để đóng; chỉ khi ảnh biến mất mới thao tác Home trong Facebook Lite.\n- Khi Home của Facebook Lite không có, bấm Android Home rồi mới gọi flow_0_v2 để mở lại app.\n- Kết quả: RECOVERY_PANEL_STILL_OPEN, RECOVERY_HOME_RESET hoặc RECOVERY_REOPENED_FACEBOOK."
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+        "type": 32,
+        "element_xpath": "",
+        "output_variable_name": "recoveryPanelExists",
+        "delay": "0,0",
+        "continue_on_error": false,
+        "id": "767b0392-81c7-4cc2-85a0-31f247277e3e",
+        "display_text": "Image exists",
+        "raw_input": "[{\"Key\":\"IMG\",\"Value\":\"img_6.img64\"},{\"Key\":\"THRESH_HOLD\",\"Value\":\"0.8\"},{\"Key\":\"TRUE_COLOR\",\"Value\":\"No\"}]",
+        "comment": "check recovery comment panel image"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.IfBlockNode, GPMAutomateEditor.Models",
+        "condition": "$recoveryPanelExists = \"true\"",
+        "nodes": [
+          {
+            "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+            "nodes": [
+              {
+                "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                "type": 108,
+                "element_xpath": "",
+                "output_variable_name": "",
+                "delay": "0,0",
+                "continue_on_error": false,
+                "id": "00307c38-29a0-4c08-8941-d3402076e77c",
+                "display_text": "Scroll",
+                "raw_input": "[{\"Key\":\"SCROLL_TYPE\",\"Value\":\"POINTS\"},{\"Key\":\"DIRECTION\",\"Value\":\"Up\"},{\"Key\":\"START_POS\",\"Value\":\"720,450\"},{\"Key\":\"END_POS\",\"Value\":\"720,1750\"},{\"Key\":\"DURATION_MS\",\"Value\":\"650\"},{\"Key\":\"POS\",\"Value\":\"\"},{\"Key\":\"ACTION_TYPE\",\"Value\":\"Down\"}]",
+                "comment": "swipe down to close recovery comment panel"
+              },
+              {
+                "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                "type": 7,
+                "element_xpath": "",
+                "output_variable_name": "",
+                "delay": "0,0",
+                "continue_on_error": false,
+                "id": "559fe7de-0895-4148-9f6c-7145468da148",
+                "display_text": "",
+                "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"600\"},{\"Key\":\"MAX\",\"Value\":\"800\"}]",
+                "comment": "wait recovery comment panel close"
+              },
+              {
+                "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                "type": 32,
+                "element_xpath": "",
+                "output_variable_name": "recoveryPanelStillExists",
+                "delay": "0,0",
+                "continue_on_error": false,
+                "id": "01124e1d-c081-43b7-af65-8c3377eed03e",
+                "display_text": "Image exists",
+                "raw_input": "[{\"Key\":\"IMG\",\"Value\":\"img_6.img64\"},{\"Key\":\"THRESH_HOLD\",\"Value\":\"0.8\"},{\"Key\":\"TRUE_COLOR\",\"Value\":\"No\"}]",
+                "comment": "verify recovery comment panel closed"
+              },
+              {
+                "$type": "GPMAutomateEditor.Models.IfBlockNode, GPMAutomateEditor.Models",
+                "condition": "$recoveryPanelStillExists = \"false\"",
+                "nodes": [
+                  {
+                    "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                    "type": 1,
+                    "element_xpath": "",
+                    "output_variable_name": "recoveryCanNavigate",
+                    "delay": "0,0",
+                    "continue_on_error": false,
+                    "id": "f453e34f-83de-457f-8f7d-9b36dd87eece",
+                    "display_text": "Set variable",
+                    "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"true\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+                    "comment": "allow Home navigation after panel closed"
+                  }
+                ],
+                "expanded": true,
+                "continue_on_error": false,
+                "id": "a84407c2-83f6-4704-adf6-fe53c745ba82",
+                "display_text": "If",
+                "raw_input": "[{\"Key\":\"CONDITION\",\"Value\":\"$recoveryPanelStillExists = \\\"false\\\"\"}]",
+                "comment": "recovery comment panel is gone"
+              },
+              {
+                "$type": "GPMAutomateEditor.Models.ElseBlockNode, GPMAutomateEditor.Models",
+                "nodes": [
+                  {
+                    "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                    "type": 1,
+                    "element_xpath": "",
+                    "output_variable_name": "recoveryCanNavigate",
+                    "delay": "0,0",
+                    "continue_on_error": false,
+                    "id": "a78ee19f-2f01-40c0-8eb8-781b5d2817a3",
+                    "display_text": "Set variable",
+                    "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"false\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+                    "comment": "block Home navigation because comment panel remains"
+                  },
+                  {
+                    "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                    "type": 1,
+                    "element_xpath": "",
+                    "output_variable_name": "recoveryResult",
+                    "delay": "0,0",
+                    "continue_on_error": false,
+                    "id": "cd37704d-5cbd-42fe-978a-dfca5f9cbfda",
+                    "display_text": "Set variable",
+                    "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"RECOVERY_PANEL_STILL_OPEN\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+                    "comment": "log recovery panel still open"
+                  }
+                ],
+                "expanded": true,
+                "continue_on_error": false,
+                "id": "59311d96-60a6-4395-80ca-07d82a40ddcc",
+                "display_text": "Else",
+                "raw_input": null,
+                "comment": "recovery comment panel still open"
+              }
+            ],
+            "expanded": true,
+            "continue_on_error": false,
+            "id": "27fd99b6-40b1-4d5a-ac54-484cacbedb39",
+            "display_text": "Normal block",
+            "raw_input": null,
+            "comment": "close comment panel when recovery image is present"
+          }
+        ],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "07b9929d-64d2-488f-ac9e-368e54feffd6",
+        "display_text": "If",
+        "raw_input": "[{\"Key\":\"CONDITION\",\"Value\":\"$recoveryPanelExists = \\\"true\\\"\"}]",
+        "comment": "recovery comment panel image found"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ElseBlockNode, GPMAutomateEditor.Models",
+        "nodes": [
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 1,
+            "element_xpath": "",
+            "output_variable_name": "recoveryCanNavigate",
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "6eb67b34-9a56-484c-926d-0ffc38c77faf",
+            "display_text": "Set variable",
+            "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"true\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+            "comment": "allow Home navigation because no comment panel is present"
+          }
+        ],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "beb10fc5-0d6f-4be7-80dd-dcb302f1b418",
+        "display_text": "Else",
+        "raw_input": null,
+        "comment": "no recovery comment panel is present"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.IfBlockNode, GPMAutomateEditor.Models",
+        "condition": "$recoveryCanNavigate = \"true\"",
+        "nodes": [
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 1,
+            "element_xpath": "",
+            "output_variable_name": "homeResult",
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "a6ee86c9-802d-401e-8e2c-7b4c0ce77cec",
+            "display_text": "Set variable",
+            "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"HOME_ICON_NOT_FOUND\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+            "comment": "set Home fallback sentinel before checking Facebook Lite"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 70,
+            "element_xpath": "",
+            "output_variable_name": "",
+            "delay": "1000,1500",
+            "continue_on_error": true,
+            "id": "14b4d0de-7b55-4692-8ff0-06e819672840",
+            "display_text": "Call workflow",
+            "raw_input": "[{\"Key\":\"REF_FILE\",\"Value\":\"flow_0_v3\"}]",
+            "comment": "reset Facebook Lite feed with Home button"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.IfBlockNode, GPMAutomateEditor.Models",
+            "condition": "$homeResult = \"HOME_ICON_NOT_FOUND\"",
+            "nodes": [
+              {
+                "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+                "nodes": [
+                  {
+                    "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                    "type": 110,
+                    "element_xpath": "",
+                    "output_variable_name": "",
+                    "delay": "0,0",
+                    "continue_on_error": false,
+                    "id": "73ce19e4-4ec8-4cc9-993d-763ee8179fa9",
+                    "display_text": "Press key",
+                    "raw_input": "[{\"Key\":\"KEY\",\"Value\":\"Home\"}]",
+                    "comment": "return to Android Home before reopening Facebook Lite"
+                  },
+                  {
+                    "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                    "type": 7,
+                    "element_xpath": "",
+                    "output_variable_name": "",
+                    "delay": "0,0",
+                    "continue_on_error": false,
+                    "id": "533aaf7e-cc63-4f85-84e6-a5891c3682b2",
+                    "display_text": "",
+                    "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"800\"},{\"Key\":\"MAX\",\"Value\":\"1200\"}]",
+                    "comment": "wait after Android Home"
+                  },
+                  {
+                    "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                    "type": 70,
+                    "element_xpath": "",
+                    "output_variable_name": "",
+                    "delay": "1000,1500",
+                    "continue_on_error": false,
+                    "id": "538ecd45-285b-4676-8bce-ccce94979e2a",
+                    "display_text": "Call workflow",
+                    "raw_input": "[{\"Key\":\"REF_FILE\",\"Value\":\"flow_0_v2\"}]",
+                    "comment": "reopen Facebook Lite from Android Home"
+                  },
+                  {
+                    "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                    "type": 1,
+                    "element_xpath": "",
+                    "output_variable_name": "recoveryResult",
+                    "delay": "0,0",
+                    "continue_on_error": false,
+                    "id": "bd695d54-3b48-4556-8789-4249f5f31b21",
+                    "display_text": "Set variable",
+                    "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"RECOVERY_REOPENED_FACEBOOK\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+                    "comment": "log Facebook Lite reopened from Android Home"
+                  }
+                ],
+                "expanded": true,
+                "continue_on_error": false,
+                "id": "52423715-96af-475f-9eae-427fd3b91ce3",
+                "display_text": "Normal block",
+                "raw_input": null,
+                "comment": "return Android Home then reopen Facebook Lite"
+              }
+            ],
+            "expanded": true,
+            "continue_on_error": false,
+            "id": "71c4a8d9-44cc-46d8-a64f-5a78460a4d14",
+            "display_text": "If",
+            "raw_input": "[{\"Key\":\"CONDITION\",\"Value\":\"$homeResult = \\\"HOME_ICON_NOT_FOUND\\\"\"}]",
+            "comment": "Facebook Home button not available"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ElseBlockNode, GPMAutomateEditor.Models",
+            "nodes": [
+              {
+                "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                "type": 1,
+                "element_xpath": "",
+                "output_variable_name": "recoveryResult",
+                "delay": "0,0",
+                "continue_on_error": false,
+                "id": "ebedb250-ad95-4361-9e52-d57201c061cf",
+                "display_text": "Set variable",
+                "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"RECOVERY_HOME_RESET\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+                "comment": "log Facebook Home feed reset"
+              }
+            ],
+            "expanded": true,
+            "continue_on_error": false,
+            "id": "a1260638-5262-4e73-a77f-f79a762124ae",
+            "display_text": "Else",
+            "raw_input": null,
+            "comment": "Facebook Home button reset succeeded"
+          }
+        ],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "335e9bfc-e8a5-4b89-a7a8-35d11f9cee10",
+        "display_text": "If",
+        "raw_input": "[{\"Key\":\"CONDITION\",\"Value\":\"$recoveryCanNavigate = \\\"true\\\"\"}]",
+        "comment": "navigate only after comment panel is absent"
+      }
+    ],
+    "expanded": true,
+    "continue_on_error": false,
+    "id": "68f64627-3df6-4320-9717-2ca13eb5b94b",
+    "display_text": "Normal block",
+    "raw_input": null,
+    "comment": "Main"
+  },
+  "name": "Main"
+}

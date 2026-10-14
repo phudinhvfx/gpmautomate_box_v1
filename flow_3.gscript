@@ -11,7 +11,7 @@
         "id": "a56b5d18-d510-4e2b-b8b4-93f72e6c189a",
         "display_text": "Normal block",
         "raw_input": null,
-        "comment": "GHI CHÚ FLOW 3\n- Điều kiện đầu vào: Facebook Lite đang ở feed. Flow cuộn feed, tìm biểu tượng Comment, rồi chỉ thao tác khi mở được panel comment.\n- Flow xác nhận panel bằng ảnh `img_6.img64` (crop `verify_panelcomment.png`), không touch vùng này để tránh focus ô nhập và mở bàn phím.\n- Đọc comment bằng 2 lượt swipe lên ngắn, tọa độ được random trong phạm vi panel. Sau đó swipe xuống để đóng và tìm lại cùng ảnh.\n- Trạng thái cuối ở biến `flow3Result`: COMMENT_ICON_NOT_FOUND, COMMENT_PANEL_NOT_OPEN, COMMENT_PANEL_CLOSED hoặc COMMENT_PANEL_STILL_OPEN.\n- Cách đếm: dùng số thứ tự node/block hiển thị trong GPM Automate, tính cả block ghi chú này."
+        "comment": "GHI CHÚ FLOW 3\n- Điều kiện đầu vào: Facebook Lite đang ở feed. Flow cuộn feed, tìm biểu tượng Comment, rồi chỉ thao tác khi mở được panel comment.\n- Flow xác nhận panel bằng ảnh `img_6.img64` (crop `verify_panelcomment.png`), không touch vùng này để tránh focus ô nhập và mở bàn phím.\n- Đọc comment bằng 2 lượt swipe lên ngắn, tọa độ được random trong phạm vi panel. Sau đó swipe xuống để đóng và tìm lại cùng ảnh.\n- Nếu đã touch Comment nhưng ảnh verify không thấy, flow vẫn swipe-down đóng panel theo nhánh fallback; log là `COMMENT_PANEL_VERIFY_NOT_FOUND_FALLBACK_SWIPE_SENT`.\n- Cách đếm: dùng số thứ tự node/block hiển thị trong GPM Automate, tính cả block ghi chú này."
       },
       {
         "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
@@ -480,6 +480,30 @@
                 "nodes": [
                   {
                     "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                    "type": 108,
+                    "element_xpath": null,
+                    "output_variable_name": null,
+                    "delay": "0,0",
+                    "continue_on_error": false,
+                    "id": "9ee54f11-7bf0-4420-a393-34f1b58998f1",
+                    "display_text": "Scroll",
+                    "raw_input": "[{\"Key\":\"SCROLL_TYPE\",\"Value\":\"POINTS\"},{\"Key\":\"DIRECTION\",\"Value\":\"Up\"},{\"Key\":\"START_POS\",\"Value\":\"720,450\"},{\"Key\":\"END_POS\",\"Value\":\"720,1750\"},{\"Key\":\"DURATION_MS\",\"Value\":\"650\"},{\"Key\":\"POS\",\"Value\":\"\"},{\"Key\":\"ACTION_TYPE\",\"Value\":\"Down\"}]",
+                    "comment": "fallback swipe down after panel image verify fails"
+                  },
+                  {
+                    "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                    "type": 7,
+                    "element_xpath": null,
+                    "output_variable_name": null,
+                    "delay": "0,0",
+                    "continue_on_error": false,
+                    "id": "50a1ea3e-8fb1-4d72-83e6-a6d7767d5d77",
+                    "display_text": "Delay",
+                    "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"600\"},{\"Key\":\"MAX\",\"Value\":\"800\"}]",
+                    "comment": "wait fallback panel close"
+                  },
+                  {
+                    "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
                     "type": 1,
                     "element_xpath": null,
                     "output_variable_name": "flow3Result",
@@ -487,8 +511,8 @@
                     "continue_on_error": false,
                     "id": "d370cd87-2994-4b79-99e6-748738c2df96",
                     "display_text": "Set variable",
-                    "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"COMMENT_PANEL_NOT_OPEN\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
-                    "comment": "log comment panel not open"
+                    "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"COMMENT_PANEL_VERIFY_NOT_FOUND_FALLBACK_SWIPE_SENT\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+                    "comment": "log fallback panel-close swipe after image verify fails"
                   }
                 ],
                 "expanded": true,
@@ -496,7 +520,7 @@
                 "id": "264fcee7-3306-448f-92be-378cea520062",
                 "display_text": "Else",
                 "raw_input": null,
-                "comment": "comment panel not open"
+                "comment": "comment panel image not found after opening; close by fallback swipe"
               }
             ],
             "expanded": true,
@@ -536,6 +560,18 @@
         "display_text": "Normal block",
         "raw_input": null,
         "comment": "open, read, and close comments"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+        "type": 1,
+        "element_xpath": "",
+        "output_variable_name": "flowRunStatus",
+        "delay": "0,0",
+        "continue_on_error": false,
+        "id": "a97402b1-a6ad-44f4-9e70-dbba777ebca1",
+        "display_text": "Set variable",
+        "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"OK\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+        "comment": "mark flow completed in Runtime log"
       }
     ],
     "expanded": true,

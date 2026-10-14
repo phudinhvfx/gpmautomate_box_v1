@@ -357,6 +357,18 @@
         "display_text": "Else",
         "raw_input": null,
         "comment": "skip Action A"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+        "type": 1,
+        "element_xpath": "",
+        "output_variable_name": "flowRunStatus",
+        "delay": "0,0",
+        "continue_on_error": false,
+        "id": "4235809d-9039-4f05-aa39-ed62839cfa97",
+        "display_text": "Set variable",
+        "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"OK\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+        "comment": "mark flow completed in Runtime log"
       }
     ],
     "expanded": true,

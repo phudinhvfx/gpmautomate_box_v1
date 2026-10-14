@@ -11,26 +11,26 @@
         "id": "e0e3d596-9beb-4ce3-90a2-0c4a44f70423",
         "display_text": "Normal block",
         "raw_input": null,
-        "comment": "GHI CHÚ FLOW 0 V3\n- Thao tác chính: kiểm tra nút Home bằng XPath. Có nút thì ghi `HOME_ICON_FOUND`, bấm XPath đó và chờ 5 giây; không có thì ghi `HOME_ICON_NOT_FOUND`.\n- XPath và biến kết quả `homeExists` nằm ở Block `Find and touch Home by XPath` → node `Has element`.\n- Điều kiện bấm Home nằm ở node `If`; hành vi thực tế của giá trị `true`/`false` cần được xác nhận bằng canary Phone.\n- Cách đếm: dùng số thứ tự node/block hiển thị trong GPM Automate, tính cả block ghi chú này."
+        "comment": "GHI CHÚ FLOW 0 V3\n- Thao tác chính: tìm nút Home bằng ảnh `img_9.img64` (nguồn: `D:\\capture\\symbol_home.png`). Có tọa độ thì ghi `HOME_ICON_FOUND`, touch tọa độ đó và chờ 5 giây; không có thì ghi `HOME_ICON_NOT_FOUND`.\n- Biến kết quả `homePos` nằm ở Block `Find and touch Home by image` → node `Image search`.\n- Chỉ touch khi `homePos` không rỗng, nên không chạm vào tọa độ rỗng.\n- Cách đếm: dùng số thứ tự node/block hiển thị trong GPM Automate, tính cả block ghi chú này."
       },
       {
         "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
         "nodes": [
           {
             "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
-            "type": 113,
-            "element_xpath": "/hierarchy/node[1]/node[1]/node[1]/node[1]/node[1]/node[1]/node[3]/node[5]/node[1]",
-            "output_variable_name": "homeExists",
+            "type": 33,
+            "element_xpath": null,
+            "output_variable_name": "homePos",
             "delay": "0,0",
             "continue_on_error": false,
             "id": "0a9a50dc-9492-4e0b-8ba1-0ae190f0747b",
-            "display_text": "Has element",
-            "raw_input": null,
-            "comment": "check Home by XPath"
+            "display_text": "Image search",
+            "raw_input": "[{\"Key\":\"IMG\",\"Value\":\"img_9.img64\"},{\"Key\":\"THRESH_HOLD\",\"Value\":\"0.8\"},{\"Key\":\"TRUE_COLOR\",\"Value\":\"No\"}]",
+            "comment": "find Home position by image"
           },
           {
             "$type": "GPMAutomateEditor.Models.IfBlockNode, GPMAutomateEditor.Models",
-            "condition": "$homeExists = \"true\"",
+            "condition": "$homePos != \"\"",
             "nodes": [
               {
                 "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
@@ -47,14 +47,14 @@
               {
                 "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
                 "type": 107,
-                "element_xpath": "/hierarchy/node[1]/node[1]/node[1]/node[1]/node[1]/node[1]/node[3]/node[5]/node[1]",
+                "element_xpath": null,
                 "output_variable_name": null,
                 "delay": "0,0",
                 "continue_on_error": false,
                 "id": "2fefb446-902c-4736-81ee-6441ad36c507",
                 "display_text": "Touch",
-                "raw_input": null,
-                "comment": "touch Home by XPath"
+                "raw_input": "[{\"Key\":\"TOUCH_TYPE\",\"Value\":\"TOUCH_POS\"},{\"Key\":\"XPATH\",\"Value\":\"\"},{\"Key\":\"POS\",\"Value\":\"$homePos\"},{\"Key\":\"MODE\",\"Value\":\"Normal\"}]",
+                "comment": "touch Home image position"
               },
               {
                 "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
@@ -73,8 +73,8 @@
             "continue_on_error": false,
             "id": "ba081ff6-9478-40c4-99a7-c01e3da63b45",
             "display_text": "If",
-            "raw_input": "[{\"Key\":\"CONDITION\",\"Value\":\"$homeExists = \\\"true\\\"\"}]",
-            "comment": "Home XPath found"
+            "raw_input": "[{\"Key\":\"CONDITION\",\"Value\":\"$homePos != \\\"\\\"\"}]",
+            "comment": "Home image position found"
           },
           {
             "$type": "GPMAutomateEditor.Models.ElseBlockNode, GPMAutomateEditor.Models",
@@ -97,7 +97,7 @@
             "id": "4b28c496-4867-42ae-b371-8d7ece0e59ee",
             "display_text": "Else",
             "raw_input": null,
-            "comment": "Home icon not found"
+            "comment": "Home image position not found"
           }
         ],
         "expanded": true,
@@ -105,7 +105,7 @@
         "id": "ed078b45-18b9-4ac4-8c89-9a0a7c2b892e",
         "display_text": "Normal block",
         "raw_input": null,
-        "comment": "Find and touch Home by XPath"
+        "comment": "Find and touch Home by image"
       }
     ],
     "expanded": true,
