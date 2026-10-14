@@ -4,6 +4,16 @@
     "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
     "nodes": [
       {
+        "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+        "nodes": [],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "8a8f2d7e-c83a-4d66-b9fe-f413ea6543f0",
+        "display_text": "Normal block",
+        "raw_input": null,
+        "comment": "GHI CHÚ FLOW 1\n- Đây là flow cũ: mở Facebook Lite, cuộn feed 5 lần, tìm ảnh Like và Comment, sau đó thử các cách đóng panel comment. Hiện không được Main gọi.\n- Flow này vẫn touch Like/Comment sau khi Image search trả về tọa độ rỗng, nên chỉ giữ làm mẫu lỗi để đối chiếu log.\n- Dùng `flow_1_v2` cho luồng Like có điều kiện: chỉ touch khi tìm thấy ảnh và có bước kiểm tra biểu tượng Liked.\n- Cách đếm: dùng số thứ tự node/block hiển thị trong GPM Automate, tính cả block ghi chú này."
+      },
+      {
         "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
         "type": 91,
         "element_xpath": null,

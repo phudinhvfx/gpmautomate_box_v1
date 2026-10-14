@@ -1,0 +1,370 @@
+{
+  "$type": "GPMAutomateEditor.Models.SubEditor, GPMAutomateEditor.Models",
+  "body": {
+    "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+    "nodes": [
+      {
+        "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+        "nodes": [],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "f4411b98-d7da-4a6b-a3d1-a7e1dc083959",
+        "display_text": "Normal block",
+        "raw_input": null,
+        "comment": "GHI CHÚ FLOW 1 V2\n- Thao tác chính: cuộn feed theo tọa độ ngẫu nhiên N lần, chờ feed, rồi random 1–9. Chỉ khi ra 1 hoặc 2 mới chạy Action A.\n- Số lần cuộn ở node `Set variable` có comment `set scroll count`; tọa độ và thời lượng cuộn ở Block `random scroll by coordinates`.\n- Action A tìm biểu tượng Like; chỉ bấm khi tìm thấy. Sau 5 giây, flow kiểm tra biểu tượng Liked và ghi một trong các trạng thái Like vào log.\n- Các thời gian sau action dùng khoảng 550–890 đến 1350–1850 ms; riêng phần random tọa độ không có delay sau completion.\n- Cách đếm: dùng số thứ tự node/block hiển thị trong GPM Automate, tính cả block ghi chú này."
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+        "type": 1,
+        "element_xpath": null,
+        "output_variable_name": "scrollTimes",
+        "delay": "550,1850",
+        "continue_on_error": false,
+        "id": "24685cd4-840d-447d-851d-0f05063f740c",
+        "display_text": "Set variable",
+        "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"5\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+        "comment": "set scroll count"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ForBlockNode, GPMAutomateEditor.Models",
+        "start": "0",
+        "end": "$scrollTimes",
+        "step": "1",
+        "nodes": [
+          {
+            "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+            "nodes": [
+              {
+                "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                "type": 11,
+                "element_xpath": null,
+                "output_variable_name": "scrollStartX",
+                "delay": "0,0",
+                "continue_on_error": false,
+                "id": "d47e93e1-9f89-4fdc-a891-8f4fdafbd3e3",
+                "display_text": "Random number",
+                "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"520\"},{\"Key\":\"MAX\",\"Value\":\"920\"}]",
+                "comment": "random start x"
+              },
+              {
+                "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                "type": 11,
+                "element_xpath": null,
+                "output_variable_name": "scrollStartY",
+                "delay": "0,0",
+                "continue_on_error": false,
+                "id": "3e3f6422-8fda-4862-b950-4760c30aac62",
+                "display_text": "Random number",
+                "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"2350\"},{\"Key\":\"MAX\",\"Value\":\"2550\"}]",
+                "comment": "random start y"
+              },
+              {
+                "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                "type": 11,
+                "element_xpath": null,
+                "output_variable_name": "scrollEndX",
+                "delay": "0,0",
+                "continue_on_error": false,
+                "id": "e6bf3ac6-0cd6-44d1-96d3-c84b82e62a9a",
+                "display_text": "Random number",
+                "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"520\"},{\"Key\":\"MAX\",\"Value\":\"920\"}]",
+                "comment": "random end x"
+              },
+              {
+                "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                "type": 11,
+                "element_xpath": null,
+                "output_variable_name": "scrollEndY",
+                "delay": "0,0",
+                "continue_on_error": false,
+                "id": "434d9ee1-ba8f-4f1a-ab3a-d4ad5d4579d1",
+                "display_text": "Random number",
+                "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"1150\"},{\"Key\":\"MAX\",\"Value\":\"1350\"}]",
+                "comment": "random end y"
+              },
+              {
+                "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                "type": 11,
+                "element_xpath": null,
+                "output_variable_name": "scrollDuration",
+                "delay": "0,0",
+                "continue_on_error": false,
+                "id": "5a18e705-62f2-4acd-916d-0e85a71b36c7",
+                "display_text": "Random number",
+                "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"450\"},{\"Key\":\"MAX\",\"Value\":\"700\"}]",
+                "comment": "random scroll duration"
+              },
+              {
+                "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                "type": 1,
+                "element_xpath": null,
+                "output_variable_name": "scrollStartPos",
+                "delay": "0,0",
+                "continue_on_error": false,
+                "id": "fc7439e7-50f2-43b7-9eaf-b4067e238b9e",
+                "display_text": "Set variable",
+                "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"$scrollStartX,$scrollStartY\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+                "comment": "set start point"
+              },
+              {
+                "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                "type": 1,
+                "element_xpath": null,
+                "output_variable_name": "scrollEndPos",
+                "delay": "0,0",
+                "continue_on_error": false,
+                "id": "d6c46e32-4675-477f-aaac-16d1a045e4df",
+                "display_text": "Set variable",
+                "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"$scrollEndX,$scrollEndY\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+                "comment": "set end point"
+              },
+              {
+                "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                "type": 108,
+                "element_xpath": null,
+                "output_variable_name": null,
+                "delay": "1500,3000",
+                "continue_on_error": false,
+                "id": "9c58a4d4-e783-4b26-ba3a-1e0a8ed8914c",
+                "display_text": "Scroll",
+                "raw_input": "[{\"Key\":\"SCROLL_TYPE\",\"Value\":\"POINTS\"},{\"Key\":\"DIRECTION\",\"Value\":\"Up\"},{\"Key\":\"START_POS\",\"Value\":\"$scrollStartPos\"},{\"Key\":\"END_POS\",\"Value\":\"$scrollEndPos\"},{\"Key\":\"DURATION_MS\",\"Value\":\"$scrollDuration\"},{\"Key\":\"POS\",\"Value\":\"\"},{\"Key\":\"ACTION_TYPE\",\"Value\":\"Down\"}]",
+                "comment": "scroll feed up"
+              }
+            ],
+            "expanded": true,
+            "continue_on_error": false,
+            "id": "6491b876-e097-4e75-8e6a-cf6c9cb9a847",
+            "display_text": "Normal block",
+            "raw_input": null,
+            "comment": "random scroll by coordinates"
+          }
+        ],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "e7b2f1d9-15c8-4e7b-8098-a8a5137a94fe",
+        "display_text": "For",
+        "raw_input": "[{\"Key\":\"START\",\"Value\":\"0\"},{\"Key\":\"END\",\"Value\":\"$scrollTimes\"},{\"Key\":\"STEP\",\"Value\":\"1\"}]",
+        "comment": "scroll feed N times"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+        "type": 7,
+        "element_xpath": null,
+        "output_variable_name": null,
+        "delay": "1550,2850",
+        "continue_on_error": false,
+        "id": "542c0fe2-ae3e-4369-820d-241c626fcbfd",
+        "display_text": "Delay",
+        "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"1500\"},{\"Key\":\"MAX\",\"Value\":\"3000\"}]",
+        "comment": "wait feed after scroll"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+        "type": 11,
+        "element_xpath": null,
+        "output_variable_name": "actionRoll",
+        "delay": "100,200",
+        "continue_on_error": false,
+        "id": "c03d2959-7882-4548-a360-e3a3850ed87a",
+        "display_text": "Random number",
+        "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"1\"},{\"Key\":\"MAX\",\"Value\":\"2\"}]",
+        "comment": "random action number"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.IfBlockNode, GPMAutomateEditor.Models",
+        "condition": "$actionRoll >= 1 && $actionRoll <= 2",
+        "nodes": [
+          {
+            "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+            "nodes": [
+              {
+                "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                "type": 1,
+                "element_xpath": null,
+                "output_variable_name": "actionResult",
+                "delay": "550,1850",
+                "continue_on_error": false,
+                "id": "aa2dfd3a-97e9-414d-9147-97b6c68fcab5",
+                "display_text": "Set variable",
+                "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"ACTION_A_SELECTED\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+                "comment": "log Action A selected"
+              },
+              {
+                "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                "type": 33,
+                "element_xpath": null,
+                "output_variable_name": "likePos",
+                "delay": "550,1850",
+                "continue_on_error": false,
+                "id": "a99809e7-8d3f-4ce4-a8fc-ab0c8feb5c70",
+                "display_text": "Image search",
+                "raw_input": "[{\"Key\":\"IMG\",\"Value\":\"img_3.img64\"},{\"Key\":\"THRESH_HOLD\",\"Value\":\"0.8\"},{\"Key\":\"TRUE_COLOR\",\"Value\":\"No\"}]",
+                "comment": "find Like position"
+              },
+              {
+                "$type": "GPMAutomateEditor.Models.IfBlockNode, GPMAutomateEditor.Models",
+                "condition": "$likePos != \"\"",
+                "nodes": [
+                  {
+                    "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                    "type": 107,
+                    "element_xpath": null,
+                    "output_variable_name": null,
+                    "delay": "550,1850",
+                    "continue_on_error": false,
+                    "id": "aa6273c6-467c-4c0f-a7b5-7b424aa6a89b",
+                    "display_text": "Touch",
+                    "raw_input": "[{\"Key\":\"TOUCH_TYPE\",\"Value\":\"TOUCH_POS\"},{\"Key\":\"XPATH\",\"Value\":\"\"},{\"Key\":\"POS\",\"Value\":\"$likePos\"},{\"Key\":\"MODE\",\"Value\":\"Normal\"}]",
+                    "comment": "touch Like position"
+                  },
+                  {
+                    "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                    "type": 7,
+                    "element_xpath": null,
+                    "output_variable_name": null,
+                    "delay": "550,1850",
+                    "continue_on_error": false,
+                    "id": "b45aee12-c22f-4bee-8bf6-763e8b239292",
+                    "display_text": "Delay",
+                    "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"5000\"},{\"Key\":\"MAX\",\"Value\":\"5000\"}]",
+                    "comment": "wait Like result"
+                  },
+                  {
+                    "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                    "type": 32,
+                    "element_xpath": null,
+                    "output_variable_name": "likedFound",
+                    "delay": "550,1850",
+                    "continue_on_error": false,
+                    "id": "30b6b791-aa30-485d-a627-c5807e92142f",
+                    "display_text": "Image exists",
+                    "raw_input": "[{\"Key\":\"IMG\",\"Value\":\"img_4.img64\"},{\"Key\":\"THRESH_HOLD\",\"Value\":\"0.8\"},{\"Key\":\"TRUE_COLOR\",\"Value\":\"No\"}]",
+                    "comment": "check Liked icon"
+                  },
+                  {
+                    "$type": "GPMAutomateEditor.Models.IfBlockNode, GPMAutomateEditor.Models",
+                    "condition": "$likedFound = \"true\"",
+                    "nodes": [
+                      {
+                        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                        "type": 1,
+                        "element_xpath": null,
+                        "output_variable_name": "likeResult",
+                        "delay": "550,1850",
+                        "continue_on_error": false,
+                        "id": "c4a8f96c-47a6-4efb-ad41-7b4cbb2d2aef",
+                        "display_text": "Set variable",
+                        "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"LIKE_CONFIRMED\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+                        "comment": "log Like confirmed"
+                      }
+                    ],
+                    "expanded": true,
+                    "continue_on_error": false,
+                    "id": "8bd1b13f-d225-49e3-802e-4c1554ba3e88",
+                    "display_text": "If",
+                    "raw_input": "[{\"Key\":\"CONDITION\",\"Value\":\"$likedFound = \\\"true\\\"\"}]",
+                    "comment": "Liked icon found"
+                  },
+                  {
+                    "$type": "GPMAutomateEditor.Models.ElseBlockNode, GPMAutomateEditor.Models",
+                    "nodes": [
+                      {
+                        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                        "type": 1,
+                        "element_xpath": null,
+                        "output_variable_name": "likeResult",
+                        "delay": "550,1850",
+                        "continue_on_error": false,
+                        "id": "85705ba3-e59a-4b3f-b7f1-cb86a36699c9",
+                        "display_text": "Set variable",
+                        "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"LIKE_NOT_CONFIRMED\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+                        "comment": "log Like not confirmed"
+                      }
+                    ],
+                    "expanded": true,
+                    "continue_on_error": false,
+                    "id": "56e908fd-170b-4e87-8ed5-0cfb0f9c5ccc",
+                    "display_text": "Else",
+                    "raw_input": null,
+                    "comment": "Liked icon not found"
+                  }
+                ],
+                "expanded": true,
+                "continue_on_error": false,
+                "id": "b05db5ba-1fb6-47b2-8821-d9aa559a9d7c",
+                "display_text": "If",
+                "raw_input": "[{\"Key\":\"CONDITION\",\"Value\":\"$likePos != \\\"\\\"\"}]",
+                "comment": "Like icon found"
+              },
+              {
+                "$type": "GPMAutomateEditor.Models.ElseBlockNode, GPMAutomateEditor.Models",
+                "nodes": [
+                  {
+                    "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+                    "type": 1,
+                    "element_xpath": null,
+                    "output_variable_name": "likeResult",
+                    "delay": "550,1850",
+                    "continue_on_error": false,
+                    "id": "de5163a4-0d3c-491b-870a-1bda603ccda3",
+                    "display_text": "Set variable",
+                    "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"LIKE_ICON_NOT_FOUND\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+                    "comment": "log Like icon not found"
+                  }
+                ],
+                "expanded": true,
+                "continue_on_error": false,
+                "id": "33f9d4d1-ddae-4dcc-812c-1ffea3fb3f9c",
+                "display_text": "Else",
+                "raw_input": null,
+                "comment": "Like icon not found"
+              }
+            ],
+            "expanded": true,
+            "continue_on_error": false,
+            "id": "709b5fba-9d93-46a0-a860-d2af0c69c053",
+            "display_text": "Normal block",
+            "raw_input": null,
+            "comment": "Action A: find and like"
+          }
+        ],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "fb42bfa8-4cf2-4df0-b5c8-25c4b148ec5c",
+        "display_text": "If",
+        "raw_input": "[{\"Key\":\"CONDITION\",\"Value\":\"$actionRoll >= 1 && $actionRoll <= 2\"}]",
+        "comment": "run Action A when random is 1 or 2"
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.ElseBlockNode, GPMAutomateEditor.Models",
+        "nodes": [
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 1,
+            "element_xpath": null,
+            "output_variable_name": "actionResult",
+            "delay": "550,1850",
+            "continue_on_error": false,
+            "id": "2fa27189-fb9d-4896-81b1-34b9c3b8b540",
+            "display_text": "Set variable",
+            "raw_input": "[{\"Key\":\"VALUE\",\"Value\":\"RANDOM_NO_ACTION\"},{\"Key\":\"ALLOW_USER_INPUT\",\"Value\":\"False\"},{\"Key\":\"USER_INPUT_TYPE\",\"Value\":\"Text\"},{\"Key\":\"COMBOBOX_DATA\",\"Value\":\"\"},{\"Key\":\"INPUT_REQUIRED\",\"Value\":\"False\"}]",
+            "comment": "log random no action"
+          }
+        ],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "87643e17-f8d2-423b-a588-90b4153e8c09",
+        "display_text": "Else",
+        "raw_input": null,
+        "comment": "skip Action A"
+      }
+    ],
+    "expanded": true,
+    "continue_on_error": false,
+    "id": "75ebfc02-a3f3-4c6c-b2f7-6696c146c2c8",
+    "display_text": null,
+    "raw_input": null,
+    "comment": null
+  },
+  "name": "Main"
+}

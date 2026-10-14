@@ -5,42 +5,6 @@
     "nodes": [
       {
         "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
-        "type": 109,
-        "element_xpath": null,
-        "output_variable_name": null,
-        "delay": "0,0",
-        "continue_on_error": false,
-        "id": "1bcfdbaf-26f0-4ba3-8503-84c029616433",
-        "display_text": "Screenshot",
-        "raw_input": null,
-        "comment": null
-      },
-      {
-        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
-        "type": 110,
-        "element_xpath": null,
-        "output_variable_name": null,
-        "delay": "0,0",
-        "continue_on_error": false,
-        "id": "903149f7-3b6d-4d9f-a96d-60672c5d0c31",
-        "display_text": "Press key",
-        "raw_input": null,
-        "comment": null
-      },
-      {
-        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
-        "type": 111,
-        "element_xpath": null,
-        "output_variable_name": null,
-        "delay": "0,0",
-        "continue_on_error": false,
-        "id": "4655ed39-cb57-459d-aee1-4edfe1ca4862",
-        "display_text": "Type text",
-        "raw_input": null,
-        "comment": null
-      },
-      {
-        "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
         "type": 70,
         "element_xpath": null,
         "output_variable_name": null,
@@ -48,7 +12,7 @@
         "continue_on_error": false,
         "id": "1674b823-e197-4f1e-a86d-6fcd4560ac2b",
         "display_text": "Call workflow",
-        "raw_input": "[{\"Key\":\"REF_FILE\",\"Value\":\"flow_1\"}]",
+        "raw_input": "[{\"Key\":\"REF_FILE\",\"Value\":\"flow_3\"}]",
         "comment": null
       }
     ],

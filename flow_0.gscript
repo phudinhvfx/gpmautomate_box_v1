@@ -4,6 +4,16 @@
     "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
     "nodes": [
       {
+        "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+        "nodes": [],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "15effb21-fd6e-4eca-926f-d8d159ecd4d3",
+        "display_text": "Normal block",
+        "raw_input": null,
+        "comment": "GHI CHÚ FLOW 0\n- Đây là flow khảo sát action Phone: ảnh, XPath, touch, scroll, clipboard và nhập text; hiện không được Main gọi.\n- Các node `Wait element` và `Touch` có comment selector 1/2/3 là mẫu thao tác XPath, không phải chuỗi khởi động Facebook Lite hoàn chỉnh.\n- Dùng `flow_0_v2` để mở Facebook Lite và chờ feed; dùng `flow_0_v3` để kiểm tra rồi bấm Home.\n- Cách đếm: dùng số thứ tự node/block hiển thị trong GPM Automate, tính cả block ghi chú này."
+      },
+      {
         "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
         "type": 31,
         "element_xpath": null,

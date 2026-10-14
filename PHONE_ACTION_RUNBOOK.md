@@ -15,9 +15,9 @@ và hậu kiểm device.
 
 | Thứ tự | Action | type | Trạng thái |
 | --- | --- | ---: | --- |
-| 1 | Wait element | 120 | Đang tìm hiểu |
-| 2 | Has element | 113 | Chưa bắt đầu |
-| 3 | Get element data | 112 | Chưa bắt đầu |
+| 1 | Wait element | 120 | Đã có mẫu source; Runtime đã xác nhận lịch sử |
+| 2 | Has element | 113 | Đã có mẫu source; Runtime chưa kiểm |
+| 3 | Get element data | 112 | Đã có mẫu source; Runtime chưa kiểm |
 | 4 | Type text | 111 | Chưa bắt đầu |
 | 5 | Press key | 110 | Chưa bắt đầu |
 | 6 | Scroll | 108 | Chưa bắt đầu |
@@ -39,6 +39,19 @@ và hậu kiểm device.
 - `delay`: `300,600` ms sau khi action hoàn tất
 - `continue_on_error`: `false`
 - `comment`: `action type 120`
+
+Mẫu mới lưu trong Main workflow ngày 2026-10-14 dùng cùng schema với XPath
+Home và timeout 10 giây:
+
+```json
+{
+  "type": 120,
+  "display_text": "Wait element",
+  "element_xpath": "/hierarchy/node[1]/node[1]/node[1]/node[1]/node[1]/node[1]/node[3]/node[5]/node[1]",
+  "output_variable_name": null,
+  "raw_input": "[{\"Key\":\"TIME_OUT\",\"Value\":\"10\"}]"
+}
+```
 
 ### Mục tiêu học
 
@@ -70,6 +83,44 @@ khoảng ba giây, sớm hơn giới hạn `TIME_OUT = 20` giây. Điều này x
 trả về khi element xuất hiện, không chờ cố định đủ 20 giây.
 
 Log không nêu target device, nên không gắn kết quả này với một serial cụ thể.
+
+## 1a. Has element (`type: 113`)
+
+### Mẫu source lưu từ Phone Editor (2026-10-14)
+
+Node mẫu trong Main workflow có cấu trúc:
+
+```json
+{
+  "type": 113,
+  "display_text": "Has element",
+  "element_xpath": "/hierarchy/node[1]/node[1]/node[1]/node[1]/node[1]/node[1]/node[3]/node[5]/node[1]",
+  "output_variable_name": "output variable name",
+  "raw_input": null
+}
+```
+
+Khi dùng, điền tên biến không có ký tự `$`, ví dụ `homeExists`. Dùng biến này ở node điều kiện tiếp theo, ví dụ `$homeExists = "true"`.
+
+`output variable name` trong node mẫu chỉ là nội dung minh họa của Editor; không phải tên biến bắt buộc. Schema source đã được xác nhận. Giá trị Runtime trả về và nhánh không tìm thấy vẫn cần một lần chạy canary để xác nhận.
+
+## 1b. Get element data (`type: 112`)
+
+### Mẫu source lưu từ Phone Editor (2026-10-14)
+
+Node mẫu trong Main workflow có cấu trúc:
+
+```json
+{
+  "type": 112,
+  "display_text": "Get element data",
+  "element_xpath": "/hierarchy/node[1]/node[1]/node[1]/node[1]/node[1]/node[1]/node[3]/node[5]/node[1]",
+  "output_variable_name": "output variiable name",
+  "raw_input": "[{\"Key\":\"ATTR_NAME\",\"Value\":\"atrribute name\"}]"
+}
+```
+
+Điền tên thuộc tính Android cần đọc vào `ATTR_NAME` và tên biến nhận dữ liệu vào `output_variable_name`. Hai chuỗi `output variiable name` và `atrribute name` giữ nguyên theo mẫu Editor, chỉ là placeholder có lỗi chính tả; khi viết flow cần thay bằng giá trị thật. Schema source đã được xác nhận, còn thuộc tính hỗ trợ và giá trị Runtime trả về chưa được kiểm chứng trên thiết bị.
 
 ## 2. Touch (`type: 107`)
 

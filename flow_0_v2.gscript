@@ -1,0 +1,72 @@
+{
+  "$type": "GPMAutomateEditor.Models.SubEditor, GPMAutomateEditor.Models",
+  "body": {
+    "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+    "nodes": [
+      {
+        "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+        "nodes": [],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "b10e0986-f0cb-4179-8656-924fd7ad20b4",
+        "display_text": "Normal block",
+        "raw_input": null,
+        "comment": "GHI CHÚ FLOW 0 V2\n- Thao tác chính: mở Facebook Lite, chờ `root_layout` xuất hiện trong tối đa 20 giây, rồi chờ feed ổn định 1.5–2.5 giây.\n- Selector chờ nằm ở Block `Mở Facebook Lite và chờ feed` → node `Wait element`.\n- Thời gian chờ feed nằm ở node `Delay` cùng block.\n- Cách đếm: dùng số thứ tự node/block hiển thị trong GPM Automate, tính cả block ghi chú này."
+      },
+      {
+        "$type": "GPMAutomateEditor.Models.NormalBlockNode, GPMAutomateEditor.Models",
+        "nodes": [
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 91,
+            "element_xpath": null,
+            "output_variable_name": null,
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "c35d0da4-588f-4586-bd0d-9a721513be34",
+            "display_text": "Start app",
+            "raw_input": "[{\"Key\":\"PACKAGE_NAME\",\"Value\":\"com.facebook.lite\"}]",
+            "comment": "open Facebook Lite"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 120,
+            "element_xpath": "//*[@resource-id='com.facebook.lite:id/root_layout']",
+            "output_variable_name": null,
+            "delay": "300,600",
+            "continue_on_error": false,
+            "id": "f3398a87-bcaa-4c0a-a004-03f47ef7d3c5",
+            "display_text": "Wait element",
+            "raw_input": "[{\"Key\":\"TIME_OUT\",\"Value\":\"20\"}]",
+            "comment": "wait Facebook Lite"
+          },
+          {
+            "$type": "GPMAutomateEditor.Models.ActionNode, GPMAutomateEditor.Models",
+            "type": 7,
+            "element_xpath": null,
+            "output_variable_name": null,
+            "delay": "0,0",
+            "continue_on_error": false,
+            "id": "3565991a-968d-42db-95b7-32a7de27b3f2",
+            "display_text": "Delay",
+            "raw_input": "[{\"Key\":\"MIN\",\"Value\":\"1500\"},{\"Key\":\"MAX\",\"Value\":\"2500\"}]",
+            "comment": "wait feed..."
+          }
+        ],
+        "expanded": true,
+        "continue_on_error": false,
+        "id": "e6d59502-ff21-4ea0-a1c7-cb637a294ea2",
+        "display_text": "Normal block",
+        "raw_input": null,
+        "comment": "Mở Facebook Lite và chờ feed"
+      }
+    ],
+    "expanded": true,
+    "continue_on_error": false,
+    "id": "45b7809b-46e6-49b8-ac66-5ce7a4239eb3",
+    "display_text": null,
+    "raw_input": null,
+    "comment": null
+  },
+  "name": "Main"
+}
